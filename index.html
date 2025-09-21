@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>celebrare Task1</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="carousel">
+        <div class="invite-carousel">
+  <!-- Left Arrow -->
+  <button class="carousel-btn left" onclick="prevSlide()">&#10094;</button>
+
+  <!-- Slides Wrapper -->
+  <div class="carousel-wrapper">
+    <div class="invite-slide active">
+      <h1 class="edit-text">We invite you and your family to our wedding anniversary.</h1>
+      <img src="images/anniversary.png" alt="Anniversary" />
+    </div>
+    <div class="invite-slide">
+      <h1 class="edit-text">Join us for a night of love, laughter, and celebration.</h1>
+      <img src="images/celebration.png" alt="Celebration" />
+    </div>
+    <div class="invite-slide">
+      <h1  class="edit-text" >Your gracious presence will make our day more special.</h1>
+      <img src="images/family.png" alt="Family" />
+    </div>
+  </div>
+
+  <!-- Right Arrow -->
+  <button class="carousel-btn right" onclick="nextSlide()">&#10095;</button>
+</div>
+</div>
+<!-- EDITING PANEL -->
+ <div class="edit-icon">
+    <span class="edit-icons">📝</span>
+ </div>
+      <div class="editing">
+        <div class="language">
+          <label for="Language">Language</label>
+          <select name="Language" onchange="changeLanguage()">
+            <option value="English">English</option>
+            <option value="Spanish">Spanish</option>
+          </select>
+        </div>
+  <!-- TEXT AREA -->
+        <div class="new-text">
+          <label for="AddText"></label>
+          <textarea
+            name="AddText"
+            id="text"
+            rows="6"
+            placeholder=""
+          ></textarea>
+
+          <!-- FONT-FAMILY -->
+<div class="fonts">
+  <div class="font-family">
+    <label for="Font-family">Font Family</label>
+    <select name="FontFamily" onchange="changeFontFamily()">
+      <option value="Arial">Arial</option>
+      <option value="Times New Roman">Times New Roman</option>
+      <option value="Courier New">Courier New</option>
+      <option value="Georgia">Georgia</option>
+      <option value="Verdana">Verdana</option>
+    </select>
+  </div>
+<!-- FONT STYLE -->
+  <div class="font-style">
+    <label for="Font-style">Font Style</label>
+    <select name="FontStyle" onchange="changeFontStyle()">
+      <option value="normal">Normal</option>
+      <option value="italic">Italic</option>
+      <option value="oblique">Oblique</option>
+    </select>
+  </div>
+<!-- FONT SIZE -->
+  <div class="font-size">
+    <label for="FontSize">Font Size</label>
+    <select name="FontSize" onchange="changeFontSize()">
+      <option value="16px">16</option>
+      <option value="20px">20</option>
+      <option value="24px">24</option>
+      <option value="28px">28</option>
+      <option value="32px">32</option>
+    </select>
+  </div>
+</div>
+<!-- TEXT CONTROLS (all in one row) -->
+<div class="text-controls">
+
+  <!-- COLOR SELECTOR -->
+  <div class="color-picker">
+    <label for="Color">Font Color</label>
+    <div class="color-options" id="colorOptions">
+      <div class="color-box" data-color="indigo"></div>
+      <div class="color-box" data-color="red"></div>
+      <div class="color-box" data-color="orange"></div>
+      <div class="color-box" data-color="pink"></div>
+      <div class="color-box" data-color="blue"></div>
+      <div class="color-box" data-color="purple"></div>
+      <div class="color-box" data-color="gold"></div>
+      <div class="color-box" data-color="yellow"></div>
+      <div class="color-box" data-color="green"></div>
+      <div class="color-box" data-color="black"></div>
+    </div>
+  </div>
+
+  <!-- LINE HEIGHT -->
+  <div class="line-height">
+    <label for="LineHeight">Line Height</label>
+    <select name="LineHeight" onchange="changeLineHeight()">
+      <option value="1">1</option>
+      <option value="1.2">1.2</option>
+      <option value="1.5">1.5</option>
+      <option value="2">2</option>
+      <option value="2.5">2.5</option>
+    </select>
+  </div>
+
+  <!-- ALIGNMENT -->
+  <div class="alignment">
+    <label for="TextAlign">Alignment</label>
+    <select name="TextAlign" onchange="changeTextAlign()">
+      <option value="left">Left</option>
+      <option value="center">Center</option>
+      <option value="right">Right</option>
+      <option value="justify">Justify</option>
+    </select>
+  </div>
+
+</div>
+
+<!-- START ANIMATION -->
+ <div class="animations">
+
+<div class="start-animation">
+  <select name="StartAnimation" onchange="applyStartAnimation()">
+    <option value="none">choose start animation</option>
+    <option value="fadeIn">Fade In</option>
+    <option value="slideInLeft">Slide In Left</option>
+    <option value="slideInRight">Slide In Right</option>
+    <option value="zoomIn">Zoom In</option>
+    <option value="bounceIn">Bounce In</option>
+  </select>
+</div>
+
+<!-- END ANIMATION -->
+<div class="end-animation">
+  <select name="EndAnimation" onchange="applyEndAnimation()">
+    <option value="none">Choose End Animation</option>
+    <option value="fadeOut">Fade Out</option>
+    <option value="slideOutLeft">Slide Out Left</option>
+    <option value="slideOutRight">Slide Out Right</option>
+    <option value="zoomOut">Zoom Out</option>
+    <option value="bounceOut">Bounce Out</option>
+  </select>
+</div>
+</div>
+
+ <script src="script.js"></script>
+  </body>
+</html>
