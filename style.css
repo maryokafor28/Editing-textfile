@@ -30,18 +30,6 @@ body {
   min-width: 0;
 }
 
-/* .carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  padding: 30px;
-  background: linear-gradient(135deg, #fffaf0, #f6e27f);
-  border: 8px solid #ffcc003c;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-} */
 .carousel h1 {
   margin: 0;
   font-size: 24px;
@@ -260,4 +248,60 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+/* --- Mobile styles --- */
+@media (max-width: 768px) {
+  body {
+    margin: 10px;
+    height: auto; /* allow content to grow */
+  }
+
+  .container {
+    flex-direction: row; /* still side by side */
+    gap: 15px;
+  }
+
+  .carousel,
+  .editing {
+    flex: 1 1 50%;
+    height: auto; /* let content size naturally */
+    min-height: 60vh;
+  }
+
+  .invite-carousel {
+    height: auto;
+    min-height: 300px;
+    border-width: 5px;
+  }
+
+  .invite-slide img {
+    max-width: 140px;
+  }
+
+  .invite-slide h1 {
+    font-size: 18px;
+  }
+
+  .editing {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  textarea,
+  input,
+  select {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  .text-controls {
+    gap: 8px;
+    flex-wrap: wrap; /* wrap if too tight */
+  }
+
+  .color-box {
+    width: 22px;
+    height: 22px;
+  }
 }
