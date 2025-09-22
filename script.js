@@ -5,17 +5,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const textArea = document.getElementById("text");
   const editIcon = document.querySelector(".edit-icon");
   const editingPanel = document.querySelector(".editing");
+  const fontSelect = document.getElementById("fontfamily");
+  const fontStyle = document.getElementById("fontstyle");
+  const fontSize = document.getElementById("fontsize");
+  const colorOptions = document.getElementById("colorOptions");
 
   let currentIndex = 0;
   let activeElement = null;
 
   function showSlide(index) {
-    // normalize index
     currentIndex = (index + slides.length) % slides.length;
-    // move whole wrapper (percent works when each slide is 100% width)
     wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-    // sync textarea to visible slide
     const activeSlide = slides[currentIndex];
     const activeTextElement = activeSlide.querySelector(".edit-text");
     if (activeTextElement) {
@@ -27,11 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // expose for inline onclicks
   window.nextSlide = function () {
     currentIndex = (currentIndex + 1) % slides.length;
     showSlide(currentIndex);
   };
+
   window.prevSlide = function () {
     currentIndex = (currentIndex - 1 + slides.length) % slides.length;
     showSlide(currentIndex);
@@ -39,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // clicking a slide's text makes it active (and navigates to that slide)
   editTextElems.forEach((el) => {
-    // make editable headings easier to spot / drag
     el.style.position = el.style.position || "absolute";
     el.style.cursor = "grab";
 
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // init/hide editor controls
+  // hide editor controls
   function initEditor() {
     if (!editingPanel) return;
     const controls = editingPanel.querySelectorAll(
@@ -89,18 +89,67 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // clicking outside hides controls
-  document.addEventListener("click", (e) => {
-    if (!editingPanel || !editIcon) return;
-    if (!editingPanel.contains(e.target) && !editIcon.contains(e.target)) {
-      const controls = editingPanel.querySelectorAll(
-        ".language, .fonts, .text-controls, .animations"
-      );
-      controls.forEach((control) => (control.style.display = "none"));
-    }
-  });
+  // FONT FAMILY //
+  if (fontSelect) {
+    fontSelect.addEventListener("change", () => {
+      const selectedFont = fontSelect.value;
+      if (activeElement) {
+        activeElement.style.fontFamily = selectedFont;
+      } else {
+        // current slide's edit-text
+        const activeSlide = slides[currentIndex];
+        const el = activeSlide.querySelector(".edit-text");
+        if (el) el.style.fontFamily = selectedFont;
+      }
+    });
+  }
 
-  // DRAGGING logic — constrain per slide (works with absolute-positioned .edit-text)
+  // FONT STYLE //
+  if (fontStyle) {
+    fontStyle.addEventListener("change", () => {
+      const selectedStyle = fontStyle.value; // normal | italic | oblique
+      if (activeElement) {
+        activeElement.style.fontStyle = selectedStyle;
+      } else {
+        const el = slides[currentIndex].querySelector(".edit-text");
+        if (el) el.style.fontStyle = selectedStyle;
+      }
+    });
+  }
+
+  // FONT SIZE//
+  if (fontSize) {
+    fontSize.addEventListener("change", () => {
+      const selectedSize = fontSize.value; // 16px, 20px, 24px, 28px, 32px
+      if (activeElement) {
+        activeElement.style.fontSize = selectedSize;
+      } else {
+        const el = slides[currentIndex].querySelector(".edit-text");
+        if (el) el.style.fontSize = selectedSize;
+      }
+    });
+  }
+  // COLOR PICKER//
+  if (colorOptions) {
+    colorOptions.addEventListener("click", (e) => {
+      if (e.target.classList.contains("color-box")) {
+        const selectedColor = e.target.getAttribute("data-color");
+        if (activeElement) {
+          activeElement.style.color = selectedColor;
+        } else {
+          const el = slides[currentIndex].querySelector(".edit-text");
+          if (el) el.style.color = selectedColor;
+        }
+
+        // Visual feedback - highlight selected color
+        const allColorBoxes = colorOptions.querySelectorAll(".color-box");
+        allColorBoxes.forEach((box) => box.classList.remove("selected"));
+        e.target.classList.add("selected");
+      }
+    });
+  }
+
+  // DRAGGING logic — constrain per slide
   editTextElems.forEach((textEl) => {
     textEl.style.touchAction = "none"; // prevent touch scrolling while dragging
     let isDragging = false;
@@ -178,4 +227,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   initEditor();
-}); // DOMContentLoaded end
+});

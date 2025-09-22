@@ -38,7 +38,7 @@
 <div class="editing">
     <div class="language">
           <label for="Language">Language</label>
-          <select id="language" name="Language" onchange="changeLanguage()">
+          <select id="language" name="Language">
             <option value="English">English</option>
             <option value="Spanish">Spanish</option>
           </select>
@@ -57,18 +57,41 @@
 <div class="fonts">
   <div class="font-family">
     <label for="Font-family">Font Family</label>
-    <select id="FontFamily"  name="FontFamily" onchange="changeFontFamily()">
-      <option value="Arial">Arial</option>
-      <option value="Times New Roman">Times New Roman</option>
-      <option value="Courier New">Courier New</option>
-      <option value="Georgia">Georgia</option>
-      <option value="Verdana">Verdana</option>
-    </select>
+    <select id="fontfamily"  name="FontFamily">
+       <option value="Arial, sans-serif">Arial</option>
+  <option value="'Helvetica Neue', Helvetica, Arial, sans-serif">Helvetica Neue</option>
+  <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
+  <option value="'Lucida Sans Unicode', 'Lucida Grande', sans-serif">Lucida Sans</option>
+  <option value="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">Gill Sans</option>
+  <option value="Verdana, sans-serif">Verdana</option>
+  <option value="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Segoe UI</option>
+  <option value="'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Franklin Gothic</option>
+
+  <!-- Serif fonts -->
+  <option value="'Times New Roman', Times, serif">Times New Roman</option>
+  <option value="Georgia, serif">Georgia</option>
+  <option value="'Palatino Linotype', 'Book Antiqua', Palatino, serif">Palatino</option>
+  <option value="'Garamond', serif">Garamond</option>
+  <option value="'Cambria', Cochin, Georgia, serif">Cambria</option>
+  <option value="'Baskerville', serif">Baskerville</option>
+
+  <!-- Monospace fonts -->
+  <option value="'Courier New', Courier, monospace">Courier New</option>
+  <option value="'Lucida Console', Monaco, monospace">Lucida Console</option>
+  <option value="Consolas, monospace">Consolas</option>
+
+  <!-- Display / casual fonts (will fallback if not installed) -->
+  <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
+  <option value="'Impact', Charcoal, sans-serif">Impact</option>
+  <option value="'Copperplate', 'Papyrus', fantasy">Copperplate / Papyrus</option>
+</select>
   </div>
+
+
 <!-- FONT STYLE -->
   <div class="font-style">
     <label for="Font-style">Font Style</label>
-    <select id="FontStyle" name="FontStyle" onchange="changeFontStyle()">
+    <select id="fontstyle" name="FontStyle">
       <option value="normal">Normal</option>
       <option value="italic">Italic</option>
       <option value="oblique">Oblique</option>
@@ -77,8 +100,12 @@
 <!-- FONT SIZE -->
   <div class="font-size">
     <label for="FontSize">Font Size</label>
-    <select id="FontSize" name="FontSize" onchange="changeFontSize()">
+    <select id="fontsize" name="FontSize">
+      <option value="10px">10</option>
+      <option value="12px">12</option>
+      <option value="14px">14</option>
       <option value="16px">16</option>
+      <option value="18px">18</option>
       <option value="20px">20</option>
       <option value="24px">24</option>
       <option value="28px">28</option>
