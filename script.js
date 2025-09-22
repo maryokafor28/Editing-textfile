@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const fontStyle = document.getElementById("fontstyle");
   const fontSize = document.getElementById("fontsize");
   const colorOptions = document.getElementById("colorOptions");
+  const lineHeight = document.getElementById("lineheight");
 
   let currentIndex = 0;
   let activeElement = null;
@@ -129,7 +130,21 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-  // COLOR PICKER//
+
+  // LINE HEIGHT//
+
+  if (lineHeight) {
+    lineHeight.addEventListener("change", () => {
+      const selectedHeight = lineHeight.value;
+      if (activeElement) {
+        activeElement.style.lineHeight = selectedHeight;
+      } else {
+        const el = slides[currentIndex].querySelector(".edit-text");
+        if (el) el.style.lineHeight = selectedHeight;
+      }
+    });
+  }
+  // COLOR PICKER
   if (colorOptions) {
     colorOptions.addEventListener("click", (e) => {
       if (e.target.classList.contains("color-box")) {
